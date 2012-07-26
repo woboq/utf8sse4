@@ -1,3 +1,19 @@
+/****************************************************************************
+ *
+ * Copyright (C) 2012 Olivier Goffart <ogoffart@woboq.com>
+ * http://woboq.com
+ *
+ * This is an experiment to process UTF-8 using SSE4 intrinscis.
+ * Read: http://woboq.com/blog/utf-8-processing-using-simd.html
+ *
+ * This file may be used under the terms of the GNU Lesser General Public
+ * License version 2.1 as published by the Free Software Foundation
+ * http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+ *
+ * For any question, please contact contact@woboq.com
+ *
+ ****************************************************************************/
+
 #include <QtCore/QtCore>
 #include <iostream>
 
