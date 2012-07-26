@@ -1,0 +1,25 @@
+This is an implemention of the conversion from UTF-8 to UTF-16 using SSE4
+
+As explained at http://woboq.com/blog/utf-8-processing-using-simd.html
+
+
+Use one of this command line to compile using 
+
+# Scalar implementation
+g++ benchmark.cc fromutf8-sse.cc -O3 -lQtCore
+
+# SSE4.1 impelmentation
+g++ benchmark.cc fromutf8-sse.cc -O3 -lQtCore -msse4.1
+
+# SSE4.2
+g++ benchmark.cc fromutf8-sse.cc -O3 -lQtCore -msse4.2
+
+# For comparison with iconv
+g++ benchmark.cc -O3 -lQtCore -DUSE_ICONV
+
+# For comparison with u8u16  [http://u8u16.costar.sfu.ca/]
+g++ benchmark.cc -O3 -lQtCore -DUSE_U8U16 u8u16/src/libu8u16.c  -mssse3 -include u8u16/config/ssse3_config.h -include stdio.h
+# You will need the files from the u8u16 project.
+
+
+
