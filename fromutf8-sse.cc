@@ -90,7 +90,7 @@ void fromUtf8_sse(const char *&src, int &len, ushort * &dst) {
         __m128i mask = _mm_and_si128( state, _mm_set1_epi8(0xf8));
         shifts  = _mm_and_si128 (shifts , _mm_cmplt_epi8(counts, _mm_set1_epi8(2))); // <=1
 
-        chunk = _mm_andnot_si128(mask , chunk); // from now on, we only have usefull bits
+        chunk = _mm_andnot_si128(mask , chunk); // from now on, we only have useful bits
 
         shifts = _mm_blendv_epi8(shifts, _mm_srli_si128(shifts, 1),
                                  _mm_srli_si128(_mm_slli_epi16(shifts, 7) , 1));
@@ -163,7 +163,7 @@ void fromUtf8_sse(const char *&src, int &len, ushort * &dst) {
 
     len = end - src;
 
-    //The rest will be handled sequencially.
+    //The rest will be handled sequentially.
     // Possible improvement: go back to the vectorized processing after the error or the 4 byte sequence
 #endif
 }
@@ -180,7 +180,7 @@ size_t fromUtf8(const char **inbuf, size_t *inbytesleft, char **outbuf, size_t *
     //First process the bytes using SSE
     fromUtf8_sse(chars, len, qch);
 
-    //Then handle the remaining bytes using scalar algorith.
+    //Then handle the remaining bytes using scalar algorithm.
     // Basically extracted from from  QUtf8::convertToUnicode in qutfcodec.c
 
     // required QChar API
